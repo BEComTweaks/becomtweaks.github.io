@@ -12,6 +12,17 @@ header {
     padding: 10px 0;
     text-align: center;
 }
+.bpbutton {
+	width: 200px;
+    height: 50px;
+    font-size: 20px;
+    padding: 10px 20px;
+	color: white;
+	background: url('others/deepslate.png');
+	background-repeat: repeat;
+	border: 2px solid #111;
+	cursor: pointer;
+}
 .rpbutton {
 	width: 200px;
     height: 50px;
@@ -23,17 +34,6 @@ header {
 	border: 2px solid #111;
 	cursor: pointer;
 	background-size:50px 50px;
-}
-.bpbutton {
-	width: 200px;
-    height: 50px;
-    font-size: 20px;
-    padding: 10px 20px;
-	color: white;
-	background: url('others/deepslate.png');
-	background-repeat: repeat;
-	border: 2px solid #111;
-	cursor: pointer;
 }
 .image-container {
     text-align: center;
