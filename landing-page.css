@@ -1,4 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+a:link {
+    color: cyan;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: hotpink;
+    background-color: transparent;
+    text-decoration: underline;
+}
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
 body {
     /* Because I can*/
     font-family: "Pixelify Sans";
