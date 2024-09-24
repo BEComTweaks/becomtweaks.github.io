@@ -1,90 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-		<meta content="Bedrock Edition Community Tweaks" name="author"/>
-		<meta content="Home page of Bedrock Edition Community Tweaks" name="description"/>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bedrock Edition Community Tweaks</title>
-        <link rel="stylesheet" href="landing-page.css">
-		<link href="icon.png" rel="icon" type="image/x-icon"/>
-    </head>
-    <body>
-		<br>
-		<div class="image-container">
-            <img id="title" alt="BedrockTweaks" src="title.png">
-        </div>
-        <div id="background-container"></div>
-        <script>
-			// Array of textures
-			const textures = [
-				{ src: "dirt/0.png" },
-				{ src: "dirt/1.png" },
-				{ src: "dirt/2.png" },
-				{ src: "dirt/3.png" },
-				{ src: "dirt/4.png" },
-				{ src: "dirt/5.png" },
-				{ src: "dirt/6.png" },
-				{ src: "dirt/7.png" },
-				{ src: "dirt/8.png" },
-				{ src: "dirt/9.png" },
-				{ src: "dirt/10.png" },
-				{ src: "dirt/11.png" },
-				{ src: "dirt/12.png" },
-				{ src: "dirt/13.png" },
-				{ src: "dirt/14.png" },
-				{ src: "dirt/15.png" }
-			];
-
-			// Function to select a texture with equal probability
-			function selectTexture() {
-				const index = Math.floor(Math.random() * textures.length);
-				return textures[index].src;
-			}
-
-			// Function to create tiles with random background images
-			function createTiles() {
-				const container = document.getElementById("background-container");
-				const numColumns = Math.ceil(window.innerWidth / 100) + 2;
-				const numRows = Math.ceil(window.innerHeight / 100) + 2;
-
-				container.innerHTML = "";
-
-				for (let i = 0; i < numColumns; i++) {
-					const rowDiv = document.createElement("div");
-					rowDiv.className = "row"; // Add a class for styling purposes if needed
-
-					for (let j = 0; j < numRows; j++) {
-						const tile = document.createElement("div");
-						tile.className = "tile";
-						tile.style.backgroundImage = `url("${selectTexture()}")`;
-						rowDiv.appendChild(tile);
-					}
-
-					container.appendChild(rowDiv);
-				}
-			}
-
-			// Call the function to create tiles
-			createTiles();
-
-			// Redraw tiles on window resize to maintain the grid
-			window.addEventListener("resize", () => {
-				document.getElementById("background-container").innerHTML = "";
-				createTiles();
-			});
-		</script>
-        <div class="text">
-			<h3>BEComTweaks will not be prioritised for updates.</h3>
-			<p>Welcome to <a href="https://becomtweaks.github.io">becomtweaks.github.io</a>, an open-sourced, updated version of <a href="https://bedrocktweaks.net">bedrocktweaks.net</a></p>
-			<p>Server sponsorship are accepted, as self-hosting is not really a good option.</p>
-		</div>
-		<div class="text">
-			<h3>Pages:</h3>
-			<button class="rpbutton" onclick="document.location='https://becomtweaks.github.io/resource-packs'">Resource Packs</button>
-			<button class="ctbutton" onclick="document.location='https://becomtweaks.github.io/crafting-tweaks'">Crafting Tweaks</button>
-			<button class="bpbutton" onclick="document.location='https://becomtweaks.github.io/behaviour-packs'">Behaviour Packs</button>
-		</div>
-		<br>
-    </body>
+  <head>
+    <meta content="Bedrock Edition Community Tweaks" name="author" />
+    <meta
+      content="Home page of Bedrock Edition Community Tweaks"
+      name="description"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bedrock Edition Community Tweaks</title>
+    <link rel="stylesheet" href="theme.css" />
+    <link href="icon.png" rel="icon" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="background-container"></div>
+    <script src="bg.js"></script>
+    <div class="half-dark">
+      <br />
+      <div class="image-container">
+        <img id="title" alt="BedrockTweaks" src="title.png" />
+      </div>
+      <div class="text">
+        <p>
+          Welcome to
+          <a href="https://becomtweaks.github.io">becomtweaks.github.io</a>, a
+          fully open-sourced, updated, cool version of
+          <a href="https://bedrocktweaks.net">bedrocktweaks.net</a>
+        </p>
+        <p>
+          Hosted in <a href="https://github.com/YzaBeast1">YzaBeast1</a>'s garrage. Themed
+          and animated by <a href="https://github.com/NSPC911">NSPC911</a>.
+        </p>
+      </div>
+      <div class="text">
+        <h3>Pages:</h3>
+        <button
+          class="rpbutton"
+          onclick="document.location='https://becomtweaks.github.io/resource-packs'"
+        >
+          Resource Packs
+        </button>
+        <button
+          class="ctbutton"
+          onclick="document.location='https://becomtweaks.github.io/crafting-tweaks'"
+        >
+          Crafting Tweaks
+        </button>
+        <button
+          class="bpbutton"
+          onclick="document.location='https://becomtweaks.github.io/behaviour-packs'"
+        >
+          Behaviour Packs
+        </button>
+        <br />
+        <button
+          class="docbutton"
+          onclick="document.location='https://becomtweaks.github.io/docs'"
+        >
+          Docs
+        </button>
+      </div>
+    </div>
+    <br />
+  </body>
 </html>

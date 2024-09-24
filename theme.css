@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+a:link {
+  color: cyan;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: hotpink;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+body {
+  /* Because I can*/
+  font-family: "Pixelify Sans";
+  margin: 0;
+  padding: 0;
+  color: white;
+  z-index: 3;
+}
+header {
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+.bpbutton {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 10px 20px;
+  color: white;
+  background: url("others/deepslate.png");
+  background-repeat: repeat;
+  border: 2px solid #111;
+  cursor: pointer;
+  background-size: 50px 50px;
+}
+.ctbutton {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 10px 20px;
+  color: white;
+  background: url("others/plank.png");
+  background-repeat: repeat;
+  border: 2px solid #111;
+  cursor: pointer;
+  background-size: 50px 50px;
+}
+.docbutton {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 10px 20px;
+  color: white;
+  background: url("others/bookshelf.png");
+  background-repeat: repeat;
+  border: 2px solid #111;
+  cursor: pointer;
+  background-size: 50px 50px;
+}
+.rpbutton {
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  padding: 10px 20px;
+  color: white;
+  background: url("others/stone.png");
+  background-repeat: repeat;
+  border: 2px solid #111;
+  cursor: pointer;
+  background-size: 50px 50px;
+}
+.half-dark {
+  background: #0000007f;
+  position: relative;
+  z-index: 5;
+  height: 100vh;
+}
+.image-container {
+  text-align: center;
+  size: cover;
+  position: relative;
+  z-index: 1;
+}
+.text {
+  text-align: center;
+  margin: 20px;
+  position: relative;
+  z-index: 1;
+  background: rgb(72, 73, 74);
+  padding: 5px;
+  border-radius: 5px;
+  border: opaque;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(84, 85, 86) rgb(49, 50, 51) rgb(49, 50, 51) rgb(84, 85, 86);
+}
+.tile {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  overflow: hidden;
+}
+#background-container {
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-template-rows: repeat(auto-fill, 100px);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+  display: flex;
+  flex-wrap: nowrap;
+}
+#title {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
