@@ -1,0 +1,66 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+# BOT_TOKEN is what I want to use most of the times,
+# But deploy hates is for no reason, so I use 
+# GITHUB_TOKEN just for the deploy job
+jobs:
+  deploy_page:
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'skip-deploy')
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./
+          retention-days: 1
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+
+      - name: Get latest commit message
+        run: echo "latest_commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
+      - name: Get Artifact ID
+        run: |
+          artifacts=$(curl -s -H "Authorization: token ${{ secrets.BOT_TOKEN }}" \
+              https://api.github.com/repos/${{ github.repository }}/actions/artifacts)
+          artifact_id=$(echo "$artifacts" | jq -r '.artifacts[0] | select(.name == "github-pages") | .id')
+          echo "Artifact ID: $artifact_id"
+          echo "artifact_id=$artifact_id" >> $GITHUB_ENV
+
+      - name: Delete Artifact
+        if: env.artifact_id != ''
+        run: |
+          curl -X DELETE -H "Authorization: token ${{ secrets.BOT_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/actions/artifacts/$artifact_id
+        
+      - name: Notify Discord
+        uses: sarisia/actions-status-discord@v1.13.0
+        with:
+          webhook: ${{ secrets.LOG_HOOK }}
+          title: ""
+          description: |
+           ### [becomtweaks.github.io:main](https://github.com/becomtweaks/becomtweaks.github.io/tree/main) has new commits
+           [`${{ env.latest_commit_message }}`](https://github.com/BEComTweaks/becomtweaks.github.io/commit/${{ github.sha }}) by ${{ github.actor }}
+
+           -# Online at https://becomtweaks.github.io/
+          avatar_url: "https://avatars.githubusercontent.com/u/176916861?v=4"
+          username: "NSPBot911"
+          nodetail: true
+          notimestamp: true
