@@ -32,59 +32,14 @@ header {
   padding: 10px 0;
   text-align: center;
 }
-.bpbutton {
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  padding: 10px 20px;
-  color: white;
-  background: url("others/deepslate.png");
-  background-repeat: repeat;
-  border: 2px solid #111;
-  cursor: pointer;
-  background-size: 50px 50px;
-}
-.ctbutton {
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  padding: 10px 20px;
-  color: white;
-  background: url("others/plank.png");
-  background-repeat: repeat;
-  border: 2px solid #111;
-  cursor: pointer;
-  background-size: 50px 50px;
-}
-.docbutton {
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  padding: 10px 20px;
-  color: white;
-  background: url("others/bookshelf.png");
-  background-repeat: repeat;
-  border: 2px solid #111;
-  cursor: pointer;
-  background-size: 50px 50px;
-}
-.rpbutton {
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  padding: 10px 20px;
-  color: white;
-  background: url("others/stone.png");
-  background-repeat: repeat;
-  border: 2px solid #111;
-  cursor: pointer;
-  background-size: 50px 50px;
-}
 .half-dark {
   background: #0000007f;
-  position: relative;
-  z-index: 5;
-  height: 100vh;
+  position: fixed;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
 }
 .image-container {
   text-align: center;
@@ -93,17 +48,20 @@ header {
   z-index: 1;
 }
 .text {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
   position: relative;
   z-index: 1;
-  background: rgb(72, 73, 74);
   padding: 5px;
-  border-radius: 5px;
-  border: opaque;
-  border-style: solid;
-  border-width: 5px;
-  border-color: rgb(84, 85, 86) rgb(49, 50, 51) rgb(49, 50, 51) rgb(84, 85, 86);
+  p {
+    text-align: center;
+  }
+  &:has(.pages) {
+    padding: 0;
+  }
 }
 .tile {
   width: 100px;
@@ -130,4 +88,40 @@ header {
   max-width: 100%;
   height: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.pages {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  
+}
+button[class$="button"] {
+  font-family: "Pixelify Sans";
+  margin: 10px;
+  width: 190px;
+  height: 80px;
+  font-size: 20px;
+  padding: 7.5px 15px;
+  background-repeat: repeat;
+  border-width: 4px;
+  cursor: pointer;
+  background-size: 36px 36px;
+  text-decoration: bold;
+}
+.bpbutton {
+  background: url("others/deepslate.png");
+}
+.ctbutton {
+  background: url("others/plank.png");
+}
+.docbutton {
+  background: url("others/bookshelf.png");
+}
+.rpbutton {
+  background: url("others/stone.png");
+}
+.discobutton {
+  background: url("others/discord.png");
 }

@@ -10,56 +10,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bedrock Edition Community Tweaks</title>
     <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="oreui-html/src/oreui.css" />
     <link href="icon.png" rel="icon" type="image/x-icon" />
   </head>
   <body>
     <div id="background-container"></div>
     <script src="bg.js"></script>
-    <div class="half-dark">
-      <br />
-      <div class="image-container">
-        <img id="title" alt="BedrockTweaks" src="title.png" />
-      </div>
-      <div class="text">
-        <p>
-          Welcome to
-          <a href="https://becomtweaks.github.io">becomtweaks.github.io</a>, a
-          fully open-sourced, updated, cool version of
-          <a href="https://bedrocktweaks.net">bedrocktweaks.net</a>
-        </p>
-        <p>
-          Hosted in <a href="https://github.com/YzaBeast1">YzaBeast1</a>'s garrage. Themed
-          and animated by <a href="https://github.com/NSPC911">NSPC911</a>.
-        </p>
-      </div>
-      <div class="text">
-        <h3>Pages:</h3>
-        <button
-          class="rpbutton"
-          onclick="document.location='https://becomtweaks.github.io/resource-packs'"
-        >
+    <br />
+    <div class="image-container">
+      <img id="title" alt="BedrockTweaks" src="title.png" />
+    </div>
+    <div oreui-type="general" oreui-color="dark" class="text">
+      <p>
+        Welcome to
+        <a href="https://becomtweaks.github.io">becomtweaks.github.io</a>, a
+        fully open-sourced, updated, cool version of
+        <a href="https://bedrocktweaks.net">bedrocktweaks.net</a>
+      </p>
+      <p>
+        Hosted in <a href="https://github.com/YzaBeast1">YzaBeast1</a>'s garrage. Themed
+        and animated by <a href="https://github.com/NSPC911">NSPC911</a>.
+      </p>
+    </div>
+    <div oreui-type="general" oreui-color="dark" class="text">
+      <h3>Pages:</h3>
+      <div class="pages">
+        <button oreui-type="button" oreui-color="green" class="rpbutton" onclick="document.location='https://becomtweaks.github.io/resource-packs'">
           Resource Packs
         </button>
-        <button
-          class="ctbutton"
-          onclick="document.location='https://becomtweaks.github.io/crafting-tweaks'"
-        >
+        <button oreui-type="button" oreui-color="green" class="ctbutton" onclick="document.location='https://becomtweaks.github.io/crafting-tweaks'">
           Crafting Tweaks
         </button>
-        <button
-          class="bpbutton"
-          onclick="document.location='https://becomtweaks.github.io/behaviour-packs'"
-        >
+        <button oreui-type="button" oreui-color="green" class="bpbutton" onclick="document.location='https://becomtweaks.github.io/behaviour-packs'">
           Behaviour Packs
         </button>
-        <br />
-        <button
-          class="docbutton"
-          onclick="document.location='https://becomtweaks.github.io/docs'"
-        >
+        <button oreui-type="button" oreui-color="green" class="docbutton" onclick="document.location='https://becomtweaks.github.io/docs'">
           Docs
         </button>
+        <button oreui-type="button" oreui-color="green" class="discobutton" onclick="document.location='https://becomtweaks.github.io/discord'">
+          Discord
+        </button>
       </div>
+    </div>
+    <div class="half-dark">
     </div>
     <br />
   </body>
