@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "topic": {
+      "type": "string"
+    },
+    "subcategory_of": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+    },
+    "packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pack_id": {
+            "type": "string"
+          },
+          "pack_name": {
+            "type": "string"
+          },
+          "pack_description": {
+            "type": "string"
+          },
+          "conflict": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "message": {
+            "type": "array",
+            "items": [
+              {
+                "type": "string",
+                "enum": ["warn", "error", "info"]
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "icon": {
+            "type": "string",
+            "default": "png"
+          },
+          "priority": {
+            "type": "integer",
+            "default": 0
+          },
+          "regolith": {
+            "type": "boolean"
+          }
+        },
+        "required": ["pack_id", "pack_name", "pack_description"]
+      }
+    }
+  },
+  "required": ["topic", "packs"]
+}
