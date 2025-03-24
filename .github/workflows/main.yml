@@ -21,20 +21,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: ./src
           retention-days: 1
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-
-      - name: Get latest commit message
-        run: echo "latest_commit_message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
 
       - name: Get Artifact ID
         run: |
