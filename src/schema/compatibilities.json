@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "max_simultaneous": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "5way": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "merge": {
+            "type": "array",
+            "items": {}
+          },
+          "location": {
+            "type": "string"
+          }
+        },
+        "required": ["merge", "location"],
+        "additionalProperties": false
+      }
+    },
+    "4way": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "merge": {
+            "type": "array",
+            "items": {}
+          },
+          "location": {
+            "type": "string"
+          }
+        },
+        "required": ["merge", "location"],
+        "additionalProperties": false
+      }
+    },
+    "3way": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "merge": {
+            "type": "array",
+            "items": {}
+          },
+          "location": {
+            "type": "string"
+          }
+        },
+        "required": ["merge", "location"],
+        "additionalProperties": false
+      }
+    },
+    "2way": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "merge": {
+            "type": "array",
+            "items": {}
+          },
+          "location": {
+            "type": "string"
+          }
+        },
+        "required": ["merge", "location"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["max_simultaneous"],
+  "additionalProperties": false
+}
