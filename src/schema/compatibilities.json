@@ -4,7 +4,7 @@
   "properties": {
     "max_simultaneous": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 2
     },
     "5way": {
       "type": "array",
@@ -19,8 +19,7 @@
             "type": "string"
           }
         },
-        "required": ["merge", "location"],
-        "additionalProperties": false
+        "required": ["merge", "location"]
       }
     },
     "4way": {
@@ -36,8 +35,7 @@
             "type": "string"
           }
         },
-        "required": ["merge", "location"],
-        "additionalProperties": false
+        "required": ["merge", "location"]
       }
     },
     "3way": {
@@ -53,8 +51,7 @@
             "type": "string"
           }
         },
-        "required": ["merge", "location"],
-        "additionalProperties": false
+        "required": ["merge", "location"]
       }
     },
     "2way": {
@@ -70,11 +67,9 @@
             "type": "string"
           }
         },
-        "required": ["merge", "location"],
-        "additionalProperties": false
+        "required": ["merge", "location"]
       }
     }
   },
-  "required": ["max_simultaneous"],
-  "additionalProperties": false
+  "required": ["max_simultaneous"]
 }
