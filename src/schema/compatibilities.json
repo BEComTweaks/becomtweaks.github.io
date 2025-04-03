@@ -17,6 +17,9 @@
           },
           "location": {
             "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
           }
         },
         "required": ["merge", "location"]
@@ -33,6 +36,9 @@
           },
           "location": {
             "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
           }
         },
         "required": ["merge", "location"]
@@ -49,6 +55,9 @@
           },
           "location": {
             "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
           }
         },
         "required": ["merge", "location"]
@@ -65,6 +74,9 @@
           },
           "location": {
             "type": "string"
+          },
+          "overwrite": {
+            "type": "boolean"
           }
         },
         "required": ["merge", "location"]
