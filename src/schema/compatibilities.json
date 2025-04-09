@@ -4,7 +4,7 @@
   "properties": {
     "max_simultaneous": {
       "type": "integer",
-      "minimum": 2
+      "minimum": 1
     },
     "5way": {
       "type": "array",
