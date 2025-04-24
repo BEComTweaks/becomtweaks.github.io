@@ -31,6 +31,12 @@
               "type": "string"
             }
           },
+          "obvious_conflict": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "message": {
             "type": "array",
             "items": [
