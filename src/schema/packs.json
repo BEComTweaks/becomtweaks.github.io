@@ -61,6 +61,9 @@
           },
           "regolith": {
             "type": "boolean"
+          },
+          "disabled": {
+            "type": "boolean"
           }
         },
         "required": ["pack_id", "pack_name", "pack_description"]
