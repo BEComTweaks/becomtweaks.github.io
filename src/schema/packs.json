@@ -3,13 +3,18 @@
   "type": "object",
   "properties": {
     "topic": {
-      "type": "string"
+      "type": "string",
+      "description": "The name of the category."
     },
     "subcategory_of": {
-      "type": "string"
+      "type": "string",
+      "description": "The name of the parent category.",
+      "minLength": 0
     },
     "location": {
-      "type": "string"
+      "type": "string",
+      "description": "The location where the category is located at.",
+      "minLength": 1
     },
     "packs": {
       "type": "array",
@@ -17,25 +22,34 @@
         "type": "object",
         "properties": {
           "pack_id": {
-            "type": "string"
+            "type": "string",
+            "description": "A unique identifier for the pack.\nRecommended to use the `pack_name` without spaces in camelCase. The category's topic can be added if necessary",
+            "minLength": 1
           },
           "pack_name": {
-            "type": "string"
+            "type": "string",
+            "description": "The name for the pack.",
+            "minLength": 1
           },
           "pack_description": {
-            "type": "string"
+            "type": "string",
+            "description": "The description for the pack, added as an explanation for the pack."
           },
           "conflict": {
             "type": "array",
             "items": {
-              "type": "string"
-            }
+              "type": "string",
+              "minItems": 1
+            },
+            "description": "The list of packs that conflict with the current pack.\nContains only Pack IDs."
           },
           "obvious_conflict": {
             "type": "array",
             "items": {
-              "type": "string"
-            }
+              "type": "string",
+              "minItems": 1
+            },
+            "description": "The list of packs that conflict with the current pack, in an obvious way.\nObvious as in you just need to know the two pack's names and know why they are conflicting."
           },
           "message": {
             "type": "array",
@@ -45,25 +59,34 @@
                 "enum": ["warn", "error", "info"]
               },
               {
-                "type": "string"
+                "type": "string",
+                "minLength": 1
               }
             ],
+            "description": "An extra stylised description is used to provide additional information to the user.\n\t[error] => red\n\t[info] => cyan\n\t[warn] => orange",
             "minItems": 2,
             "maxItems": 2
           },
           "icon": {
+            "examples": ["apng", "gif", "ico", "cur", "jpg", "jpeg", "jfif", "pjpeg", "pjp", "png", "svg"],
             "type": "string",
-            "default": "png"
+            "default": "png",
+            "description": "Change the extension of the pack icon used. Any icon can be used, as long as it can be rendered by HTML.\nImage extension list referenced from https://www.w3schools.com/html/html_images.asp"
           },
           "priority": {
             "type": "integer",
-            "default": 0
+            "description": "Priority level of a pack, whether it will be overwritten, or will overwrite a pack.\nThe higher it is, the more likely it will overwrite other packs.",
+            "default": 0,
+            "maximum": 998,
+            "minimum": 0
           },
           "regolith": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether this pack is required to be built using regolith in the backend"
           },
           "disabled": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether this pack can be selected in the frontend or not."
           }
         },
         "required": ["pack_id", "pack_name", "pack_description"]
