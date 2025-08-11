@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "API Endpoint Configuration",
+  "description": "Schema for defining API endpoints and their test cases.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "A human-readable name for the endpoint."
+      },
+      "path": {
+        "type": "string",
+        "description": "The base path of the endpoint (e.g., '/exportResourcePack')."
+      },
+      "method": {
+        "type": "string",
+        "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
+        "description": "The HTTP method for the request."
+      },
+      "payload": {
+        "description": "The request body, if applicable (e.g., for POST, PUT).",
+        "oneOf": [
+          { "type": "object" },
+          { "type": "string" },
+          { "type": "null" }
+        ]
+      },
+      "headers": {
+        "type": "object",
+        "patternProperties": {
+          "^[a-zA-Z0-9-]+$": { "type": "string" }
+        },
+        "additionalProperties": false,
+        "description": "Key-value pairs for request headers common to all test cases for this endpoint."
+      },
+      "testCases": {
+        "type": "array",
+        "minItems": 1,
+        "description": "An array of individual test scenarios for this endpoint.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "A description of the specific test case."
+            },
+            "pathOverride": {
+              "type": "string",
+              "description": "An optional path segment to append to the base path (e.g., query parameters)."
+            },
+            "responseTypeExpected": {
+              "type": "string",
+              "enum": ["file", "json", "text", "redirect"],
+              "description": "The expected type of the response."
+            },
+            "headers": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z0-9-]+$": { "type": "string" }
+              },
+              "additionalProperties": false,
+              "description": "Additional or overriding headers specific to this test case."
+            },
+            "expectedStatus": {
+              "type": "integer",
+              "description": "The expected HTTP status code of the response."
+            }
+          },
+          "required": [
+            "description",
+            "responseTypeExpected",
+            "expectedStatus"
+          ],
+          "allOf": [
+            {
+              "if": { "properties": { "responseTypeExpected": { "const": "file" } } },
+              "then": {
+                "properties": {
+                  "outputFileName": {
+                    "type": "string",
+                    "description": "The name to save the downloaded file as (required for 'file' type)."
+                  }
+                },
+                "required": ["outputFileName"]
+              }
+            },
+            {
+              "if": { "properties": { "responseTypeExpected": { "enum": ["text", "json"] } } },
+              "then": {
+                "properties": {
+                  "expectedContentPartial": {
+                    "type": "string",
+                    "description": "A substring expected to be present in the response body."
+                  },
+                  "expectedContentExact": {
+                    "type": "string",
+                    "description": "The exact content expected in the response body (overrides partial if both are present)."
+                  }
+                },
+                "oneOf": [
+                  { "required": ["expectedContentPartial"] },
+                  { "required": ["expectedContentExact"] }
+                ]
+              }
+            },
+            {
+              "if": { "properties": { "responseTypeExpected": { "const": "redirect" } } },
+              "then": {
+                "properties": {
+                  "expectedLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The expected URL of the redirect location."
+                  }
+                },
+                "required": ["expectedLocation"]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "required": ["name", "path", "method", "testCases"]
+  }
+}
