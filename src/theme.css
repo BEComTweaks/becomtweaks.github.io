@@ -21,294 +21,295 @@
 }
 
 :root {
-    --light-bg: rgb(208, 209, 212);
-    --light-border: rgb(222, 223, 225) rgb(227, 227, 229) rgb(227, 227, 229)
-        rgb(222, 223, 225);
-    --light-bezel: rgb(98, 98, 100);
+  --light-bg: rgb(208, 209, 212);
+  --light-border: rgb(222, 223, 225) rgb(227, 227, 229) rgb(227, 227, 229)
+    rgb(222, 223, 225);
+  --light-bezel: rgb(98, 98, 100);
 
-    --dark-bg: rgb(72, 73, 74);
-    --dark-border: rgb(106, 108, 112) rgb(84, 86, 88) rgb(84, 86, 88)
-        rgb(106, 108, 112);
-    --dark-bezel: rgb(49, 50, 51);
-    --outer-bezel-black: black;
+  --dark-bg: rgb(72, 73, 74);
+  --dark-border: rgb(106, 108, 112) rgb(84, 86, 88) rgb(84, 86, 88)
+    rgb(106, 108, 112);
+  --dark-bezel: rgb(49, 50, 51);
+  --outer-bezel-black: black;
 
-    --green-bg: rgb(60, 133, 39);
-    --green-border: rgb(99, 157, 82) rgb(79, 145, 60) rgb(79, 145, 60)
-        rgb(99, 157, 82);
-    --green-bezel: rgb(52, 84, 43);
+  --green-bg: rgb(60, 133, 39);
+  --green-border: rgb(99, 157, 82) rgb(79, 145, 60) rgb(79, 145, 60)
+    rgb(99, 157, 82);
+  --green-bezel: rgb(52, 84, 43);
 
-    --light-disabled-bg: rgb(208, 209, 212);
-    --light-disabled-border: rgb(208, 209, 212); /* weird */
-    --light-disabled-bezel: rgb(177, 178, 181);
-    --outer-bezel-light-disabled: rgb(140, 141, 144);
+  --light-disabled-bg: rgb(208, 209, 212);
+  --light-disabled-border: rgb(208, 209, 212); /* weird */
+  --light-disabled-bezel: rgb(177, 178, 181);
+  --outer-bezel-light-disabled: rgb(140, 141, 144);
 
-    --dark-disabled-bg: rgb(53, 54, 55);
-    --dark-disabled-border: rgb(78, 80, 83) rgb(62, 64, 65) rgb(62, 64, 65)
-        rgb(78, 80, 83);
-    --dark-disabled-bezel: rgb(36, 37, 38);
+  --dark-disabled-bg: rgb(53, 54, 55);
+  --dark-disabled-border: rgb(78, 80, 83) rgb(62, 64, 65) rgb(62, 64, 65)
+    rgb(78, 80, 83);
+  --dark-disabled-bezel: rgb(36, 37, 38);
 
-    --pink-bg: rgb(255, 186, 231);
-    --pink-border: rgb(255, 235, 248) rgb(245, 215, 235) rgb(245, 215, 235)
-        rgb(255, 235, 248);
-    --pink-bezel: rgb(117, 38, 89);
-    --outer-bezel-pink: rgb(55, 18, 42);
+  --pink-bg: rgb(255, 186, 231);
+  --pink-border: rgb(255, 235, 248) rgb(245, 215, 235) rgb(245, 215, 235)
+    rgb(255, 235, 248);
+  --pink-bezel: rgb(117, 38, 89);
+  --outer-bezel-pink: rgb(55, 18, 42);
 
-    --red-bg: rgb(214, 71, 71);
-    --red-border: rgb(224, 114, 114) rgb(173, 29, 29) rgb(173, 29, 29)
-        rgb(224, 114, 114);
-    --red-bezel: rgb(96, 24, 25);
+  --red-bg: rgb(214, 71, 71);
+  --red-border: rgb(224, 114, 114) rgb(173, 29, 29) rgb(173, 29, 29)
+    rgb(224, 114, 114);
+  --red-bezel: rgb(96, 24, 25);
 
-    --purple-bg: rgb(115, 69, 229);
-    --purple-border: rgb(162, 100, 242) rgb(142, 73, 235) rgb(142, 73, 235)
-        rgb(162, 100, 242);
-    --purple-bezel: rgb(74, 28, 172);
+  --purple-bg: rgb(115, 69, 229);
+  --purple-border: rgb(162, 100, 242) rgb(142, 73, 235) rgb(142, 73, 235)
+    rgb(162, 100, 242);
+  --purple-bezel: rgb(74, 28, 172);
 
-    --padding: 5px 15px;
-    --bezel-size: 5px;
-    --hover-overlay: rgba(0, 0, 0, 0.05);
+  --padding: 5px 15px;
+  --bezel-size: 5px;
+  --hover-overlay: rgba(0, 0, 0, 0.05);
 }
 [oreui-type="button"] {
-    border-width: 5px;
-    border-style: solid;
-    border-radius: 0;
-    cursor: pointer;
-    padding: var(--padding);
-    transform: translateY(-1px);
-    text-align: center;
-    /* Take care of the transitions */
-    transition: border-color 0s, background-color 0s;
-    /* Bezel */
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 0;
+  cursor: pointer;
+  padding: var(--padding);
+  transform: translateY(-1px);
+  text-align: center;
+  /* Take care of the transitions */
+  transition:
+    border-color 0s,
+    background-color 0s;
+  /* Bezel */
+  &::before {
+    position: absolute;
+    content: "";
+    bottom: calc(-3px - var(--bezel-size));
+    left: -5px;
+    right: -5px;
+    height: var(--bezel-size);
+    transform: translateY(0);
+    pointer-events: none;
+  }
+  /* Hover and active states */
+  &:hover::before {
+    height: 0;
+  }
+  &:active::before,
+  &[oreui-state="active"]::before {
+    height: 0;
+  }
+  /* Reset the transform when not active */
+  &:not(:active):not(:hover):not([oreui-state="active"]) {
+    transform: translateY(calc(-1px - var(--bezel-size)));
+  }
+  /* Override the default styles when disabled */
+  &[disabled],
+  &[disabled="true"],
+  &:disabled {
+    /* default dark */
+    color: white;
+    background-color: var(--dark-disabled-bg) !important;
+    border-color: var(--dark-disabled-border) !important;
+    cursor: not-allowed;
     &::before {
-        position: absolute;
-        content: "";
-        bottom: calc(-3px - var(--bezel-size));
-        left: -5px;
-        right: -5px;
-        height: var(--bezel-size);
-        transform: translateY(0);
-        pointer-events: none;
+      background-color: var(--dark-disabled-bezel) !important;
     }
-    /* Hover and active states */
-    &:hover::before {
-        height: 0;
+    &::after {
+      border-color: var(--outer-bezel-black) !important;
     }
-    &:active::before,
-    &[oreui-state="active"]::before {
-        height: 0;
+    &[oreui-disabled-color="light"] {
+      color: black;
+      background-color: var(--light-disabled-bg) !important;
+      border-color: var(--light-disabled-border) !important;
+      &::before {
+        background-color: var(--light-disabled-bezel) !important;
+      }
+      &::after {
+        border-color: var(--outer-bezel-light-disabled) !important;
+      }
     }
-    /* Reset the transform when not active */
-    &:not(:active):not(:hover):not([oreui-state="active"]) {
-        transform: translateY(calc(-1px - var(--bezel-size)));
-    }
-    /* Override the default styles when disabled */
-    &[disabled],
-    &[disabled="true"],
-    &:disabled {
-        /* default dark */
-        color: white;
-        background-color: var(--dark-disabled-bg) !important;
-        border-color: var(--dark-disabled-border) !important;
-        cursor: not-allowed;
-        &::before {
-            background-color: var(--dark-disabled-bezel) !important;
-        }
-        &::after {
-            border-color: var(--outer-bezel-black) !important;
-        }
-        &[oreui-disabled-color="light"] {
-            color: black;
-            background-color: var(--light-disabled-bg) !important;
-            border-color: var(--light-disabled-border) !important;
-            &::before {
-                background-color: var(--light-disabled-bezel) !important;
-            }
-            &::after {
-                border-color: var(--outer-bezel-light-disabled) !important;
-            }
-        }
-    }
-    /* The surrounding bezel 
+  }
+  /* The surrounding bezel
      Outline could've been used but offset
      isn't flexible (the bottom offset needs
      to change, but it can't) */
+  &::after {
+    position: absolute;
+    content: "";
+    border-style: solid;
+    border-width: 2.5px;
+    bottom: calc(-5px - var(--bezel-size));
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    pointer-events: none;
+  }
+  &:hover::after,
+  &:active::after,
+  &[oreui-state="active"]::after {
+    bottom: -5px;
+  }
+  /* dim when hover */
+  &:hover::after {
+    background: var(--hover-overlay);
+  }
+  /* Colors */
+  &[oreui-color="red"],
+  &[oreui-active-color="red"]:active,
+  &[oreui-active-color="red"][oreui-state="active"] {
+    &::before {
+      background-color: var(--red-bezel);
+    }
     &::after {
-        position: absolute;
-        content: "";
-        border-style: solid;
-        border-width: 2.5px;
-        bottom: calc(-5px - var(--bezel-size));
-        left: -5px;
-        right: -5px;
-        top: -5px;
-        pointer-events: none;
+      border-color: var(--outer-bezel-black);
     }
-    &:hover::after,
-    &:active::after,
-    &[oreui-state="active"]::after {
-        bottom: -5px;
+  }
+  &[oreui-color="pink"],
+  &[oreui-active-color="pink"]:active,
+  &[oreui-active-color="pink"][oreui-state="active"] {
+    &::before {
+      background-color: var(--pink-bezel);
     }
-    /* dim when hover */
-    &:hover::after {
-        background: var(--hover-overlay);
+    &::after {
+      border-color: var(--outer-bezel-pink);
     }
-    /* Colors */
-    &[oreui-color="red"],
-    &[oreui-active-color="red"]:active,
-    &[oreui-active-color="red"][oreui-state="active"] {
-        &::before {
-            background-color: var(--red-bezel);
-        }
-        &::after {
-            border-color: var(--outer-bezel-black);
-        }
+  }
+  &[oreui-color="purple"],
+  &[oreui-active-color="purple"]:active,
+  &[oreui-active-color="purple"][oreui-state="active"] {
+    &::before {
+      background-color: var(--purple-bezel);
     }
-    &[oreui-color="pink"],
-    &[oreui-active-color="pink"]:active,
-    &[oreui-active-color="pink"][oreui-state="active"] {
-        &::before {
-            background-color: var(--pink-bezel);
-        }
-        &::after {
-            border-color: var(--outer-bezel-pink);
-        }
+    &::after {
+      border-color: var(--outer-bezel-black);
     }
-    &[oreui-color="purple"],
-    &[oreui-active-color="purple"]:active,
-    &[oreui-active-color="purple"][oreui-state="active"] {
-        &::before {
-            background-color: var(--purple-bezel);
-        }
-        &::after {
-            border-color: var(--outer-bezel-black);
-        }
+  }
+  &[oreui-color="green"],
+  &[oreui-active-color="green"]:active,
+  &[oreui-active-color="green"][oreui-state="active"] {
+    &::before {
+      background-color: var(--green-bezel);
     }
-    &[oreui-color="green"],
-    &[oreui-active-color="green"]:active,
-    &[oreui-active-color="green"][oreui-state="active"] {
-        &::before {
-            background-color: var(--green-bezel);
-        }
-        &::after {
-            border-color: var(--outer-bezel-black);
-        }
+    &::after {
+      border-color: var(--outer-bezel-black);
     }
-    &[oreui-color="light"],
-    &[oreui-active-color="light"]:active,
-    &[oreui-active-color="light"][oreui-state="active"] {
-        &::before {
-            background-color: var(--light-bezel);
-        }
-        &::after {
-            border-color: var(--outer-bezel-black);
-        }
+  }
+  &[oreui-color="light"],
+  &[oreui-active-color="light"]:active,
+  &[oreui-active-color="light"][oreui-state="active"] {
+    &::before {
+      background-color: var(--light-bezel);
     }
-    &[oreui-color="dark"],
-    &[oreui-active-color="dark"]:active,
-    &[oreui-active-color="dark"][oreui-state="active"] {
-        &::before {
-            background-color: var(--dark-bezel);
-        }
-        &::after {
-            border-color: var(--outer-bezel-black);
-        }
+    &::after {
+      border-color: var(--outer-bezel-black);
     }
+  }
+  &[oreui-color="dark"],
+  &[oreui-active-color="dark"]:active,
+  &[oreui-active-color="dark"][oreui-state="active"] {
+    &::before {
+      background-color: var(--dark-bezel);
+    }
+    &::after {
+      border-color: var(--outer-bezel-black);
+    }
+  }
 }
 
 /* Default states */
 [oreui-color="red"] {
-    background-color: var(--red-bg);
-    border-color: var(--red-border);
-    color: white;
+  background-color: var(--red-bg);
+  border-color: var(--red-border);
+  color: white;
 }
 [oreui-color="pink"] {
-    background-color: var(--pink-bg);
-    border-color: var(--pink-border);
-    color: black;
+  background-color: var(--pink-bg);
+  border-color: var(--pink-border);
+  color: black;
 }
 [oreui-color="purple"] {
-    background-color: var(--purple-bg);
-    border-color: var(--purple-border);
-    color: white;
+  background-color: var(--purple-bg);
+  border-color: var(--purple-border);
+  color: white;
 }
 [oreui-color="green"] {
-    background-color: var(--green-bg);
-    border-color: var(--green-border);
-    color: white;
+  background-color: var(--green-bg);
+  border-color: var(--green-border);
+  color: white;
 }
 [oreui-color="light"] {
-    background-color: var(--light-bg);
-    border-color: var(--light-border);
-    color: black;
+  background-color: var(--light-bg);
+  border-color: var(--light-border);
+  color: black;
 }
 [oreui-color="dark"] {
-    background-color: var(--dark-bg);
-    border-color: var(--dark-border);
-    color: white;
+  background-color: var(--dark-bg);
+  border-color: var(--dark-border);
+  color: white;
 }
 
 /* Active states */
 [oreui-active-color="red"]:active,
 [oreui-active-color="red"][oreui-state="active"] {
-    background-color: var(--red-bg);
-    border-color: var(--red-border);
-    color: white;
+  background-color: var(--red-bg);
+  border-color: var(--red-border);
+  color: white;
 }
 [oreui-active-color="pink"]:active,
 [oreui-active-color="pink"][oreui-state="active"] {
-    background-color: var(--pink-bg);
-    border-color: var(--pink-border);
-    color: black;
+  background-color: var(--pink-bg);
+  border-color: var(--pink-border);
+  color: black;
 }
 [oreui-active-color="purple"]:active,
 [oreui-active-color="purple"][oreui-state="active"] {
-    background-color: var(--purple-bg);
-    border-color: var(--purple-border);
-    color: white;
+  background-color: var(--purple-bg);
+  border-color: var(--purple-border);
+  color: white;
 }
 [oreui-active-color="green"]:active,
 [oreui-active-color="green"][oreui-state="active"] {
-    background-color: var(--green-bg);
-    border-color: var(--green-border);
-    color: white;
+  background-color: var(--green-bg);
+  border-color: var(--green-border);
+  color: white;
 }
 [oreui-active-color="light"]:active,
 [oreui-active-color="light"][oreui-state="active"] {
-    background-color: var(--light-bg);
-    border-color: var(--light-border);
-    color: black;
+  background-color: var(--light-bg);
+  border-color: var(--light-border);
+  color: black;
 }
 [oreui-active-color="dark"]:active,
 [oreui-active-color="dark"][oreui-state="active"] {
-    background-color: var(--dark-bg);
-    border-color: var(--dark-border);
-    color: white;
+  background-color: var(--dark-bg);
+  border-color: var(--dark-border);
+  color: white;
 }
 [oreui-type="general"] {
-    border-width: 5px;
-    border-style: solid;
-    border-radius: 0;
-    padding: var(--padding);
-    text-align: center;
-    outline: 2.5px solid var(--outer-bezel-black);
-    outline-offset: -2px;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 0;
+  padding: var(--padding);
+  text-align: center;
+  outline: 2.5px solid var(--outer-bezel-black);
+  outline-offset: -2px;
 }
 [oreui-type="input"] {
-    background: rgb(51, 51, 51);
-    outline-style: solid;
-    outline-color: rgb(27, 27, 27);
-    outline-width: 2.5px;
-    box-shadow: inset 0 5px 0 0 rgb(35, 35, 35);
-    outline-offset: -2px;
+  background: rgb(51, 51, 51);
+  outline-style: solid;
+  outline-color: rgb(27, 27, 27);
+  outline-width: 2.5px;
+  box-shadow: inset 0 5px 0 0 rgb(35, 35, 35);
+  outline-offset: -2px;
+  color: white;
+  &:focus {
+    outline-color: white;
+    outline-offset: 0px;
+  }
+  &::placeholder {
     color: white;
-    &:focus {
-        outline-color: white;
-        outline-offset: 0px;
-    }
-    &::placeholder {
-        color: white;
-    }
+  }
 }
-
 
 a:link {
   color: cyan;
@@ -406,7 +407,6 @@ header {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  
 }
 button[class$="button"] {
   font-family: "Futura Medium";
@@ -434,5 +434,117 @@ button[class$="button"] {
   background: url("others/stone.png");
 }
 .discobutton {
-  background: #5865F2;
+  background: #5865f2;
+}
+.fake-assistant-toggle {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 120;
+  width: 62px;
+  min-width: 62px;
+  height: 62px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:has(+ .open) {
+    display: none;
+  }
+}
+
+.fake-assistant-toggle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.fake-assistant-panel {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  width: min(340px, calc(100vw - 30px));
+  min-height: 360px;
+  max-height: 55vh;
+  z-index: 119;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+}
+
+.fake-assistant-panel.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fake-assistant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  h3 {
+    margin: 0;
+    text-align: left;
+    font-size: 1.05em;
+    transform: translateY(-0.25em);
+    sub {
+      font-weight: initial;
+    }
+  }
+}
+
+.fake-assistant-close {
+  min-width: 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  line-height: 1;
+  font-family: "Futura Heavy";
+}
+
+.fake-assistant-messages {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 4px;
+}
+
+.fake-assistant-message {
+  max-width: 90%;
+  padding: 8px 10px;
+  border: 2px solid var(--dark-bezel);
+  background: rgb(51, 51, 51);
+}
+
+.fake-assistant-message.user {
+  align-self: flex-end;
+}
+
+.fake-assistant-message.bot {
+  align-self: flex-start;
+}
+
+.fake-assistant-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  input {
+    flex: 1;
+    padding: 8px;
+    min-width: 0;
+  }
+}
+
+.fake-assistant-send {
+  min-width: 64px;
 }
